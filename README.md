@@ -1,5 +1,3 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-
 # Attitude and Heading Reference System (AHRS)
 
    * [License](LICENSE.md)
@@ -10,33 +8,8 @@
 
 # Installation
 
-## Arduino
-Simply clone or download and extract the zipped library into your Arduino/libraries folder. In addition to this library, the [Bolder Flight Systems Units library](https://github.com/bolderflight/units) and [Bolder Flight Systems Eigen library](https://github.com/bolderflight/eigen) must be installed. The library is added as:
-
-```C++
-#include "navigation.h"
-```
-
-An example is located in *examples/arduino/nav_example/nav_example.ino*. This library is tested with Teensy 3.x, 4.x, and LC devices and is expected to work with other Arduino ARM devices. It is **not** expected to work with AVR devices.
-
-## CMake
-CMake is used to build this library, which is exported as a library target called *navigation*. The header is added as:
-
-```C++
-#include "navigation.h"
-```
-
-The library can be also be compiled stand-alone using the CMake idiom of creating a build directory and then, from within that directory issuing:
-
-```
-cmake ..
-make
-```
-
-This will build the library, an example executable called *nav_example*, and an executable for testing using the Google Test framework, called *nav_test*. The example executable source file is located at *examples/cmake/nav_example.cc*.
-
-# Namespace
-This library is within the namespace *bfs*.
+## Matlab
+Simply clone or download and the library into your  MATLAB  path folder. MATLAB 2023a was used. Include the dataset if desired for sample data.
 
 # Constants
 The following constants are defined from WGS84:
@@ -50,6 +23,11 @@ The following constants are defined from WGS84:
 | First eccentricity squared | double ECC2 | 6.69437999014e-3 |
 | Angular velocity of the Earth, rad/s | WE_RADPS | 7292115.0e-11 |
 | Earth's gravitational constant, m^3/s^2 | GM_M3PS2 | 3986004.418e8 |
+
+The following constants were also used
+| Description | Variable | Value |
+| --- | --- | --- |
+| Magnetic Declination, deg | magvar_deg | -3.26581 |
 
 # Filters
 
