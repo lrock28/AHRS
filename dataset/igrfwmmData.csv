@@ -1,0 +1,20 @@
+############################################################
+#              Magnetic Field Components
+############################################################
+#   8 Fields
+#     (1) Date in decimal years
+#     (2) Declination in decimal degrees
+#     (3) Inclination in decimal degrees
+#     (4) Horintensity in nanoTesla (nT)
+#     (5) Totalintensity in nanoTesla (nT)
+#     (6) Xcomponent in nanoTesla (nT)
+#     (7) Ycomponent in nanoTesla (nT)
+#     (8) Zcomponent in nanoTesla (nT)
+# NOTE: The first row is change per year in degrees or nanoTesla (nT);
+#
+#   Magnetic Model: IGRF2020 (calculator version 0.5.1.11)
+#   Elevation: 0.00000 km GPS
+#   Latitude: 33.21550 degrees, Longitude: -87.54370 degrees
+############################################################
+change/year,-0.07723,-0.08855,11.0,-115.3,9.3,-31.6,-137.0
+2023.42192,-3.26581,61.63768,22994.8,48405.5,22957.5,-1310.0,42595.0
