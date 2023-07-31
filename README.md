@@ -30,9 +30,28 @@ The following constants were also used:
 # Filters
 
 ## 6 State EKF AHRS
+IMU data was parsed into Matlab from an excel file. After parsing the data, the AHRS attitude was initialized using the accelerometer and magnetometer data. The pitch and roll were calculated from the accelerometer specific force vector, $f_{b}$.
+
+The body acceleration, $a_{b}$, had no way to be calculated, and was thus assumed to be zero. The magnitude of the gravity acceleration vector, $g_n$, was calculated using the current latitude, longitude, and WGS84 ellipsoid data. The yaw was calculated using the three axis magnetometer (TAM) data, $\overrightarrow{h_B}\ $, which needed to be projected onto the horizontal plan using a tilt compensation equation (TC).
+        
+The roll, $\phi$, and pitch, $\theta$, in the previous equation were used from the accelerometer data.  After the projection was completed, the yaw, $\psi$ was calculated with the projection, $h_{TC}$, and the magnetic declination, $\eta$.        
+        
+The initial gyroscope bias, $b_{g}$, was given as $b_{g} = [0.00024 -0.00013 .00056]^T rad/s$ based on previous tests with the sensor. The magnetic variation was pulled from the National Oceanic and Atmospheric Association (NOAA) website for the latitude and longitude of the vehicle, given from a GPS receiver. The magnetic variation was assumed to be constant at $-3.2658 rad$, but could vary with the latitude and longitude with a magnetic variation grid.
+        
+After initializing the INS state, the state was predicted using a time update. The state was comprised of the Euler angles, $\widehat{\psi}$, and the three estimated gyroscope biases, $\widehat{b_g}$. In order to calculate the Euler angles at each time step, the measured gyroscope angular rates, $\overrightarrow{\omega_{B,N\leftarrow}}$, were adjusted for the gyroscope biases and integrated. In order to integrate the angular rates, they were converted to quaternions, discretized at 0.01s intervals, and linearized using a first order Taylor Series. After predicting the Euler angles, the  covariance matrix, $\widehat{P_k}$, could be propagated forward in the time step.
+        
+The process noise covariance, $Q_k$, is calculated from the power spectral density, S, of the gyroscope, gyroscope characteristics, $\tau_g$ and $\sigma_{bg}$, and the Euler Direction Cosine Matrix, $C_{NB}$.
+
+        
+After propagating the covariance matrix forward in time, the AHRS calculates the Euler angles from the accelerometer and magnetometer sensors so as to build the error state and integrate the solutions together.
+
+The innovation, $\delta y_k$, is calculated by taking the residual between the gyroscope Euler angles and the measurement update Euler angles. Then, a Kalman gain, $K$ is calculated in order to correct the original state for the measurement updates using the gyroscope estimated noise covariance, $R$.
+
+With the Kalman gain calculated, a corrected covariance matrix, $P_k$, is then calculated.
+
+Lastly within the measurement update, the attitude and gyroscope bias were updated by multiplying the Kalman gain by the innovation, and adding the error state to the original Euler angles.
 
 # Transformations
-
 
 ## Attitude
 These functions convert between:
