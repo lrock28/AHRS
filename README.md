@@ -1,6 +1,6 @@
 # Attitude and Heading Reference System (AHRS)
 
-   * [License](LICENSE.md)
+   * [License](LICENSE)
    * [Changelog](CHANGELOG.md)
    * [Contributing guide](CONTRIBUTING.md)
 
