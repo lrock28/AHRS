@@ -15,13 +15,10 @@ The following constants are defined from WGS84:
 
 | Description | Variable | Value |
 | --- | --- | --- |
-| Semi-major axis, m | double SEMI_MAJOR_AXIS_LENGTH_M | 6378137.0 |
-| Semi-minor axis, m | double SEMI_MINOR_AXIS_LENGTH_M | 6356752.3142 |
-| Flattening | double FLATTENING | 1.0 / 298.257223563 |
-| First eccentricity | double ECC | 8.1819190842622e-2 |
-| First eccentricity squared | double ECC2 | 6.69437999014e-3 |
-| Angular velocity of the Earth, rad/s | WE_RADPS | 7292115.0e-11 |
-| Earth's gravitational constant, m^3/s^2 | GM_M3PS2 | 3986004.418e8 |
+| Semi-major axis, m | wgs84.a | 6378137.0 |
+| Flattening | wgs84.flattening | 1.0 / 298.257223563 |
+| Angular velocity of the Earth, rad/s | wgs84.earth_rot_rate | 7292115.0e-11 |
+| Earth's gravitational constant, m^3/s^2 | wgs84.g_const | 3986004.418e8 |
 
 The following constants were also used:
 
